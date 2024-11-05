@@ -6,8 +6,8 @@ import ctypes
 
 class Camera:
     def __init__(self, h, w):
-        self.znear = 0.01
-        self.zfar = 100
+        self.znear = 20
+        self.zfar = 300
         self.h = h
         self.w = w
         self.fovy = np.pi / 2
@@ -16,6 +16,7 @@ class Camera:
         self.up = np.array([0.0, -1.0, 0.0]).astype(np.float32)
         self.yaw = -np.pi / 2
         self.pitch = 0
+        
         
         self.is_pose_dirty = True
         self.is_intrin_dirty = True
@@ -41,7 +42,12 @@ class Camera:
         return np.stack([x, self.up, z], axis=-1)
 
     def get_view_matrix(self):
-        return np.array(glm.lookAt(self.position, self.target, self.up))
+        position_vec3 = glm.vec3(*self.position)
+        target_vec3 = glm.vec3(*self.target)
+        up_vec3 = glm.vec3(*self.up)
+
+        # Now use glm.lookAt with the glm.vec3 types
+        return np.array(glm.lookAt(position_vec3, target_vec3, up_vec3))
 
     def get_project_matrix(self):
         # htanx, htany, focal = self.get_htanfovxy_focal()
