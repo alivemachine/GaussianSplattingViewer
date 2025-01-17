@@ -15,10 +15,10 @@ ROTATION_STEP = 10
 # Number of images (full 360 degrees)
 NUM_IMAGES = 360 // ROTATION_STEP
 # Distance of the camera from the object (adjust to fit the vehicle's size)
-CAMERA_DISTANCE = 50.0
+CAMERA_DISTANCE = 100.0
 # Center of the vehicle (adjust if the object is off-center)
-VEHICLE_CENTER = np.array([-2,-2,-3])
-CAMERA_ORIGINAL_POS = np.array([-2,-3,-3])
+VEHICLE_CENTER = np.array([-4,-5,5])
+CAMERA_ORIGINAL_POS = np.array([-4,-9,5])#back,down,right
 FOV = 0.2
 
 def impl_glfw_init(window_name, width, height):
