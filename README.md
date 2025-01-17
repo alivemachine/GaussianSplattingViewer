@@ -1,3 +1,24 @@
+This viewer has been modified to export 36 color images and 36 depth images orbiting around a car model. 
+
+# Quick start
+```
+pip install -r requirements.txt
+```
+Run with a ply:
+```
+python main.py --ply "D:\evox\batch_processor\cars\20241104\MY24_GMC_Canyon_AT4X.ply"
+```
+To modify the camera position go into the file `main.py`
+and modify any of the following lines:
+```
+# Distance of the camera from the object (adjust to fit the vehicle's size)
+CAMERA_DISTANCE = 100.0
+# Center of the vehicle (adjust if the object is off-center)
+VEHICLE_CENTER = np.array([-4,-5,5])
+CAMERA_ORIGINAL_POS = np.array([-4,-9,5])#back,down,right
+FOV = 0.2
+```
+
 # Tiny Gaussian Splatting Viewer
 ![UI demo](assets/teaser.png)
 This is a simple Gaussian Splatting Viewer built with PyOpenGL / CUDARasterizer. It's easy to install with minimum dependencies. The goal of this project is to provide a minimum example of the viewer for research and study purpose. 
